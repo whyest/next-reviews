@@ -1,15 +1,26 @@
 import { readFile } from "node:fs/promises";
 import { marked } from "marked";
+import matter from "gray-matter";
 import Heading from "@/components/Heading";
 
+const getReview = async (slug) => {
+  const text = await readFile(`./content/reviews/${slug}.md`, "utf8");
+  const {
+    content,
+    data: { title, date, image },
+  } = matter(text);
+  const body = marked(content, { headerIds: false, mangle: false });
+  return { title, date, image, body };
+};
+
 const StardewValleyPage = async () => {
-  const text = await readFile("./content/reviews/stardew-valley.md", "utf8");
-  const html = marked(text, { headerIds: false, mangle: false });
+  const review = await getReview("stardew-valley");
   return (
     <>
-      <Heading>Stardew-valley page</Heading>
+      <Heading>{review.title}</Heading>
+      <p className="pb-2 italic">{review.date}</p>
       <img
-        src="/images/stardew-valley.jpg"
+        src={review.image}
         alt="image"
         width="640"
         height="360"
@@ -17,7 +28,7 @@ const StardewValleyPage = async () => {
       />
 
       <article
-        dangerouslySetInnerHTML={{ __html: html }}
+        dangerouslySetInnerHTML={{ __html: review.body }}
         className="prose prose-slate max-w-screen-sm"
       />
     </>
