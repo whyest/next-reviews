@@ -21,7 +21,7 @@ const ReviewsPage = () => {
           </Link>
         </li>
         <li className='bg-white border w-80 rounded shadow hover:shadow-xl'>
-          <Link href='/reviews/stardew-valley'>
+          <Link href='/reviews/hollow-knight'>
             <img
               src='/images/hollow-knight.jpg'
               alt='image'
