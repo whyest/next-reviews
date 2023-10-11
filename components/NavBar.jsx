@@ -4,9 +4,12 @@ export default function NavBar() {
   return (
     <nav>
       <ul className='flex gap-2'>
-        <li>
-          <Link href='/' className='text-orange-800 hover:underline'>
-            Home
+        <li className='mr-auto'>
+          <Link
+            href='/'
+            className='font-bold font-orbitron text-orange-800 hover:underline'
+          >
+            Indie Gamer
           </Link>
         </li>
         <li>
