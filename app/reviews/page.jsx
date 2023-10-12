@@ -1,41 +1,37 @@
-import Link from 'next/link'
-import Heading from '@/components/Heading'
-const ReviewsPage = () => {
+import Link from "next/link";
+import Heading from "@/components/Heading";
+import { getReviews } from "@/lib/reviews";
+const ReviewsPage = async () => {
+  const reviews = await getReviews();
   return (
     <>
       <Heading>Reviews Page</Heading>
 
-      <ul className='flex flex-col gap-3'>
-        <li className='bg-white border w-80 rounded shadow hover:shadow-xl'>
-          <Link href='/reviews/stardew-valley'>
-            <img
-              src='/images/stardew-valley.jpg'
-              alt='image'
-              width='320'
-              height='180'
-              className='rounded-t mb-2'
-            />
-            <h2 className='font-semibold font-orbitron text-center py-1'>
-              Stardew Valley
-            </h2>
-          </Link>
-        </li>
-        <li className='bg-white border w-80 rounded shadow hover:shadow-xl'>
-          <Link href='/reviews/hollow-knight'>
-            <img
-              src='/images/hollow-knight.jpg'
-              alt='image'
-              width='320'
-              height='180'
-              className='rounded-t mb-2'
-            />
-            <h2 className='font-semibold font-orbitron text-center py-1'>
-              Hollow Knight
-            </h2>
-          </Link>
-        </li>
+      <ul className="flex flex-row flex-wrap gap-3">
+        {reviews.map((review) => {
+          const { title, slug, date, image } = review;
+          return (
+            <li
+              key={slug}
+              className="w-80 rounded border bg-white shadow hover:shadow-xl"
+            >
+              <Link href={`/reviews/${slug}`}>
+                <img
+                  src={image}
+                  alt={title}
+                  width="320"
+                  height="180"
+                  className="mb-2 rounded-t"
+                />
+                <h2 className="py-1 text-center font-orbitron font-semibold">
+                  {title}
+                </h2>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </>
-  )
-}
-export default ReviewsPage
+  );
+};
+export default ReviewsPage;
