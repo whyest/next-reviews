@@ -1,8 +1,8 @@
 import Heading from "@/components/Heading";
 import { getReview } from "@/lib/reviews";
 
-const StardewValleyPage = async () => {
-  const review = await getReview("stardew-valley");
+const ReviewPage = async ({ params: { slug } }) => {
+  const review = await getReview(slug);
   return (
     <>
       <Heading>{review.title}</Heading>
@@ -22,4 +22,4 @@ const StardewValleyPage = async () => {
     </>
   );
 };
-export default StardewValleyPage;
+export default ReviewPage;
