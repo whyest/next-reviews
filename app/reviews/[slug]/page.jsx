@@ -1,4 +1,5 @@
 import Heading from "@/components/Heading";
+import ShareLinkButton from "@/components/ShareLinkButton";
 import { getReview, getSlugs } from "@/lib/reviews";
 
 export const generateStaticParams = async () => {
@@ -6,12 +7,22 @@ export const generateStaticParams = async () => {
   return slugs.map((slug) => ({ slug }));
 };
 
+export const generateMetadata = async ({ params: { slug } }) => {
+  const review = await getReview(slug);
+  return {
+    title: review.title,
+  };
+};
+
 const ReviewPage = async ({ params: { slug } }) => {
   const review = await getReview(slug);
   return (
     <>
       <Heading>{review.title}</Heading>
-      <p className="pb-2 italic">{review.date}</p>
+      <div className="mb-3 flex items-baseline gap-3">
+        <p className="pb-2 italic">{review.date}</p>
+        <ShareLinkButton />
+      </div>
       <img
         src={review.image}
         alt="image"
