@@ -1,5 +1,6 @@
 import Heading from "@/components/Heading";
 import { getFeaturedReview } from "@/lib/reviews";
+import Image from "next/image";
 import Link from "next/link";
 
 const HomePage = async () => {
@@ -12,7 +13,7 @@ const HomePage = async () => {
       <p className="pb-3">Only the best indie games, reviewed for you.</p>
       <div className="w-80 rounded border bg-white shadow hover:shadow-xl sm:w-full">
         <Link href={`/reviews/${slug}`} className="flex flex-col sm:flex-row">
-          <img
+          <Image
             src={image}
             alt="image"
             width="320"

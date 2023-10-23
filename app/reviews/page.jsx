@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Heading from "@/components/Heading";
 import { getReviews } from "@/lib/reviews";
 
@@ -22,7 +23,7 @@ const ReviewsPage = async () => {
               className="w-80 rounded border bg-white shadow hover:shadow-xl"
             >
               <Link href={`/reviews/${slug}`}>
-                <img
+                <Image
                   src={image}
                   alt={title}
                   width="320"

@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Image from "next/image";
 import Heading from "@/components/Heading";
 import ShareButtons from "@/components/ShareButtons";
 import { getReview, getSlugs } from "@/lib/reviews";
@@ -21,11 +23,18 @@ const ReviewPage = async ({ params: { slug } }) => {
   return (
     <>
       <Heading>{review.title}</Heading>
+      <Link
+        href={"/reviews"}
+        className="my-2 inline-block rounded border px-2 py-1 text-sm capitalize text-slate-500 duration-200 hover:bg-orange-100 hover:text-slate-700"
+      >
+        Back to reviews
+      </Link>
       <div className="mb-3 flex items-baseline gap-3">
         <p className="pb-2 italic">{review.date}</p>
         <ShareButtons />
       </div>
-      <img
+
+      <Image
         src={review.image}
         alt="image"
         width="640"
