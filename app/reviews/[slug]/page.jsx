@@ -6,7 +6,7 @@ import { getReview, getSlugs } from "@/lib/reviews";
 
 export const generateStaticParams = async () => {
   const slugs = await getSlugs();
-  console.log("[Review page] generateStaticParams:", slugs);
+  // console.log("[Review page] generateStaticParams:", slugs);
   return slugs.map((slug) => ({ slug }));
 };
 
@@ -36,6 +36,7 @@ const ReviewPage = async ({ params: { slug } }) => {
 
       <Image
         src={review.image}
+        priority
         alt="image"
         width="640"
         height="360"

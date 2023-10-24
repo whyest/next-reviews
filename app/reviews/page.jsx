@@ -8,14 +8,14 @@ export const metadata = {
 };
 
 const ReviewsPage = async () => {
-  const reviews = await getReviews();
+  const reviews = await getReviews(6);
   // console.log("[Reviews page] reviews:", reviews);
   return (
     <>
       <Heading>Reviews Page</Heading>
 
       <ul className="flex flex-row flex-wrap gap-3">
-        {reviews.map((review) => {
+        {reviews.map((review, index) => {
           const { title, slug, date, image } = review;
           return (
             <li
@@ -25,6 +25,7 @@ const ReviewsPage = async () => {
               <Link href={`/reviews/${slug}`}>
                 <Image
                   src={image}
+                  priority={index === 0}
                   alt={title}
                   width="320"
                   height="180"
