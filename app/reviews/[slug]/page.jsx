@@ -23,6 +23,7 @@ const ReviewPage = async ({ params: { slug } }) => {
   return (
     <>
       <Heading>{review.title}</Heading>
+      <p className="pb-3 font-semibold">{review.subtitle}</p>
       <Link
         href={"/reviews"}
         className="my-2 inline-block rounded border px-2 py-1 text-sm capitalize text-slate-500 duration-200 hover:bg-orange-100 hover:text-slate-700"
