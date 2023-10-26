@@ -3,8 +3,6 @@ import { getReviews } from "@/lib/reviews";
 import Image from "next/image";
 import Link from "next/link";
 
-export const revalidate = 30; //30 seconds
-
 const HomePage = async () => {
   const reviews = await getReviews(3);
   console.log(
@@ -34,8 +32,8 @@ const HomePage = async () => {
                 height="180"
                 className="rounded-t sm:rounded-l sm:rounded-r-none"
               />
-              <div className="px-2 py-1 text-center sm:text-left">
-                <h2 className="py-1 text-center font-orbitron font-semibold sm:px-2">
+              <div className="py-2 text-center sm:px-4 sm:text-left">
+                <h2 className="py-1 font-orbitron font-semibold">
                   {review.title}
                 </h2>
                 <p className="hidden pt-2 sm:block">{review.subtitle}</p>
