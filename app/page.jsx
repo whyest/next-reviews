@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const HomePage = async () => {
-  const reviews = await getReviews(3);
+  const { reviews } = await getReviews(3);
   console.log(
     "[HomePage] rendering:",
     reviews.map((review) => review.slug).join(", "),
