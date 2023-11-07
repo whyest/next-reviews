@@ -15,10 +15,10 @@ const PAGE_SIZE = 6;
 const ReviewsPage = async ({ searchParams }) => {
   const page = parsePageParam(searchParams.page);
   const { reviews, pageCount } = await getReviews(PAGE_SIZE, page);
-  console.log(
-    "[ReviewsPage] rendering:",
-    reviews.map((review) => review.slug).join(", "),
-  );
+  // console.log(
+  //   "[ReviewsPage] rendering:",
+  //   reviews.map((review) => review.slug).join(", "),
+  // );
   console.log("[ReviewsPage] rendering:", page);
   return (
     <>
