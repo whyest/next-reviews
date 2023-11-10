@@ -3,7 +3,6 @@ import { Combobox } from "@headlessui/react";
 import { useIsClient } from "@/lib/hooks";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { searchReviews } from "@/lib/reviews";
 
 const SearchBox = () => {
   const isClient = useIsClient();
@@ -14,7 +13,10 @@ const SearchBox = () => {
   useEffect(() => {
     if (query.length > 1) {
       (async () => {
-        const reviews = await searchReviews(query);
+        const response = await fetch(
+          "/api/search?query=" + encodeURIComponent(query),
+        );
+        const reviews = await response.json();
         setReviews(reviews);
       })();
     } else {
